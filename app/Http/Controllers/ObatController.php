@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Obat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ObatController extends Controller
 {
     // menampilkan semua data obat
     // menambah obat
     // update obat
-    // hapus obat
+    // hapus obat   
     public function index(){
         // ambil semua data dan ditampilkan
         $obats = Obat::all();

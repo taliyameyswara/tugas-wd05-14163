@@ -1,38 +1,5 @@
 @extends('layout.main')
 
-@section('sidebar')
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
-            <li class="nav-item">
-                <a href="{{ route('pasien.dashboard') }}" class="nav-link active">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('pasien.periksa') }}" class="nav-link ">
-                    <p>
-                        Periksa
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('pasien.riwayat') }}" class="nav-link ">
-                    <p>
-                        Riwayat
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-@endsection
-
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">

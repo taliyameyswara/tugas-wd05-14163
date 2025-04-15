@@ -16,11 +16,11 @@ Route::get('/tables', [DashboardController::class, 'tables']);
 /* --------------- Guest bisa login dan register --------------- */
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 Route::get('/register', function () {
     return view('auth.register');
-});
+})->name('register');
 
 /* --------------- Pasien bisa ke halaman dashboard, periksa, dan riwayat --------------- */
 Route::get('/pasien', function () {
@@ -28,12 +28,12 @@ Route::get('/pasien', function () {
 })->name('pasien.dashboard');
 
 Route::get('/pasien/periksa', function () {
-    return view('pasien.periksa');
+    return view('pasien.periksa.index');
 })->name('pasien.periksa');
 
-Route::get('/pasien/riwayat', function () {
-    return view('pasien.riwayat');
-})->name('pasien.riwayat');
+// Route::get('/pasien/riwayat', function () {
+//     return view('pasien.riwayat');
+// })->name('pasien.riwayat');
 
 
 /* --------------- Dokter bisa ke halaman dashboard, memeriksa pasien, dan obat --------------- */
@@ -43,7 +43,7 @@ Route::get('/dokter', function () {
 
 Route::get('/dokter/periksa', function () {
     $periksas = Periksa::all();
-    return view('dokter.periksa', compact('periksas'));
+    return view('dokter.periksa.index', compact('periksas'));
 })->name('dokter.periksa');
 
 // Route::get('/dokter/obat', function () {
