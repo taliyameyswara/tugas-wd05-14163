@@ -60,11 +60,6 @@
                         <form>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nama Anda</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Input your name">
-                                </div>
-                                <div class="form-group">
                                     <label for="exampleSelectRounded0">Pilih Dokter</label>
                                     <select class="custom-select rounded-0" id="exampleSelectRounded0">
                                         <option>Value 1</option>

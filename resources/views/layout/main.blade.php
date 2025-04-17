@@ -219,70 +219,76 @@
                 </div>
 
                 {{-- Dokter --}}
-                <hr>
-                <p>Sidebar Dokter</p>
-                <hr>
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="{{ route('dokter.dashboard') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('dokter.periksa') }}" class="nav-link ">
-                                <p>
-                                    Periksa
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('dokter.obat') }}" class="nav-link active">
-                                <p>
-                                    Obat
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                @if (Auth::user()->role == 'dokter')
 
-                {{-- Pasien --}}
-                <hr>
-                <p>Sidebar Pasien</p>
-                <hr>
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="{{ route('pasien.dashboard') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('pasien.periksa') }}" class="nav-link ">
-                                <p>
-                                    Periksa
-                                </p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="{{ route('dokter.dashboard') }}"
+                                class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('dokter.periksa') }}"  class="nav-link {{ request()->routeIs('dokter.periksa') ? 'active' : '' }}">
+                                    <p>
+                                        Periksa
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('dokter.obat') }}"  class="nav-link {{ request()->routeIs('dokter.obat') ? 'active' : '' }}">
+                                    <p>
+                                        Obat
+                                    </p>
+                                </a>
+                            </li>
 
-                        {{-- Logout --}}
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
-                                <p>
-                                    Logout
-                                </p>
-                            </a>
-                        </li>
+                @elseif (Auth::user()->role == 'pasien')
+                            <li class="nav-item">
+                                <a href="{{ route('pasien.dashboard') }}"
+                                class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('pasien.periksa') }}"
+                                class="nav-link {{ request()->routeIs('pasien.periksa') ? 'active' : '' }}">
+                                    <p>
+                                        Periksa
+                                    </p>
+                                </a>
+                            </li>
 
-                    </ul>
-                </nav>
+                            {{-- Logout --}}
+
+
+                @else
+                @endif
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>
+                                Logout
+                            </p>
+                        </button>
+                    </form>
+
+                </li>
+
+            </ul>
+        </nav>
+
+
+
             </div>
             <!-- /.sidebar -->
         </aside>
